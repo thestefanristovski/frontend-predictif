@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: myFont;
+                background-color: black;
+                color: white;
+            }
+
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTROMAN.TTF);
+            }
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTBOLD.TTF);
+                font-weight: bold;
+            }
+
+
+            /*SCROLL BAR*/
+            /* width */
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background:black;
+                border: 1.5px solid white; 
+            }
+            ::-webkit-scrollbar-track:horizontal {
+                background:white;
+                border: 1.5px solid white; 
+            }
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: white; 
+            }
+
+            .header{
+                height: auto;
+                background-color: black;
+            }
+
+            .wrapper{
+                display: inline;
+                text-align: center;
+                margin-left: 2%;
+                margin-right: auto;
+                padding-top: 50px;
+                width: 15%;
+
+            }
+
+            .logo {
+                display: inline;
+                padding-top: 27px;
+                width: 15%;
+            }
+
+            .menu{
+
+                text-align: right;
+                padding-right: 3%;
+                padding-top: 3%;
+                padding-bottom: 100px;
+                color: black; 
+                height: 70%px;
+                float: right;
+            }
+
+            .menu button{
+                padding: 9px 18px;
+                color: white;
+                text-align: center;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                margin-bottom: 20px;
+            }
+
+            .commencer button{
+                padding: 9px 18px;
+                color: black;
+                text-align: center;
+                background-color: white;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                width: 100%
+            }
+
+            .commencer button:hover{
+                background-color: black;
+                color: white;
+            }
+
+            .menu button:hover{
+                background-color: white;
+                color: black;
+            }
+
+            .menu button:disabled{
+                background-color: white;
+                color: black;
+            }
+
+            .centered {	
+                height: 40px;
+                width: 1000px;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 100%;
+            }
+
+            .corpsHaut{
+                position: relative;
+                text-align: center;
+                width: 100%;
+                height: auto;
+            }
+
+            .title{
+                position: absolute;
+                text-align: center;
+                color: white;
+                width: 100%;
+                height: 5em;
+            }
+
+            .text{
+                text-align:left; 
+                font-size: 1.2vw; 
+                padding-left: 0.5%
+            }
+
+            .commencer{
+                position: sticky;
+                bottom: 0;
+            }
+
+            .circleplace{
+                position: relative;
+                padding: 0em;
+                left:  40%;
+                top: 20%;
+                width: 10vw;
+                height: 10vw;
+                overflow: hidden;
+                border-radius: 50%;
+                border: 0.3vw solid white;
+                margin-bottom: 3vw;
+            }
+
+
+            .circleimage{
+                padding: 0;
+                margin: 0;
+                width: auto;
+                height: 100%;
+                margin-left: -4vw;
+            }
+
+        </style>
+    </head>
+    <body>
+
+
+        <div class="header">
+            <div class="wrapper">
+                <img src="images/logoWhite.png" alt="Logo" class="logo">
+            </div>
+            <div class="menu">
+                <button onclick="location.href = 'ActiviteAgence.html'">Votre Agence</button>
+                <button disabled="disabled">Consultations</button>
+                <button onclick="location.href = 'profilEmploye.html'">Mon Profil</button>
+                <button id="deconnecter">Se déconnecter</button>
+            </div>
+        </div>
+
+
+        <div class="corpsHaut">
+            <div class="title" style="padding-bottom: 4vw; margin-bottom: 4vw;">
+                <p style="font-size: 2.5vw;">Prochaine Consultation</p>
+                <p id="nondispo" class="Non Disponible" style="font-size: 1.5vw;"><br><br><br><br>Aucune Consultation Disponible<br>Vous recevrez une notification bientôt</p>
+            </div> 
+
+
+
+
+            <table id="leclient" width="100%" style="margin-top: 4vw; padding-top: 4vw;">
+                <tr>
+                    <td>
+                        <p style="font-size: 2.2vw;">Info Client + ses consultations </p>
+                        <table id="lemedium">
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Nom :</strong>
+                                </td>
+                                <td id="nom" width="50%px" class="text">
+                                    Applesmith
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Prénom :</strong>
+                                </td>
+                                <td id="prenom" width="50%px" class="text">
+                                    Johnny
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Signe Zodiac :</strong>
+                                </td>
+                                <td id="signezodiac" width="50%px" class="text">
+                                    Scorpio
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Signe astrologique chinois :</strong>
+                                </td>
+                                <td  id="signechinois" width="50%px" class="text">
+                                    Dragon
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Couleur porte-bonheur :</strong>
+                                </td>
+                                <td id="couleur" width="50%px" class="text">
+                                    Rouge
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Animal Totem :</strong>
+                                </td>
+                                <td  id="animal" width="50%px" class="text">
+                                    Serpent
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                        </table>
+                        <br><br>
+                        <table id="listeConsultations" width="100%">
+                            <tr>
+                                <td width="20%" style="text-align:right;">
+                                    <strong style="font-size: 1.2vw">Date</strong>
+                                </td>
+                                <td width="20%" style="text-align:center;">
+                                    <strong style="font-size: 1.2vw">Medium</strong>
+                                </td>
+                                <td width="60%" style="text-align:left;">
+                                    <strong style="font-size: 1.2vw">Commentaires</strong>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <p id="titremedium" style="font-size: 2.2vw;"> Info Medium </p>
+                        <div id="placeholder" class="circleplace">
+                            <img src="images/profil.jpg" alt="Logo" class="circleimage">
+                        </div>
+                        <table id="informations">
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Type :</strong>
+                                </td>
+                                <td width="50%px" class="text" id="type">
+                                    Spirite
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Dénomination :</strong>
+                                </td>
+                                <td width="50%px" class="text" id="denomination">
+                                    Gwanaelle
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <!-- <tr>
+                                 <td width="50%" style="text-align:right">
+                                     <strong style="font-size: 1.2vw">Support :</strong>
+                                 </td>
+                                 <td width="50%px" class="text">
+                                     Boule de cristal
+                                 </td>
+                                 <td> <br> </td>
+                             </tr>
+                             <tr>
+                                 <td width="50%" style="text-align:right">
+                                     <strong style="font-size: 1.2vw">Présentation :</strong>
+                                 </td>
+                                 <td width="50%px" class="text">
+                                     Spécialiste des grandes conversations au-delà de TOUTES les frontières
+                                 </td>
+                                 <td> <br> </td>
+                             </tr> -->
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br><br>
+        <div id="boutonCommencer" class="commencer">
+            <button id="commencer">Commencer</button>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+
+                var idConsultation;
+                console.log("Function deployed"); // LOG dans Console Javascript
+
+                $('#nondispo').hide();
+                $('#leclient').hide();
+                $('#titremedium').hide();
+                $('#lemedium').hide();
+                $('#placeholder').hide();
+                $('#boutonCommencer').hide();
+
+
+                $('#deconnecter').on('click', function () {
+
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'deconnexion'
+                        }
+                    })
+                            .always(function (response) {
+                                window.location.href = "index.html";
+                            });
+
+
+                });
+
+                $('#commencer').on('click', function () { // Fonction appelée lors du clic sur le bouton
+                    console.log("clic sur le bouton Commencer"); // LOG dans Console Javascript
+
+
+                    // Appel AJAX
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'commencer',
+                            idConsultation: idConsultation, //il faut declarer variable globale au debut de javascript 
+                        },
+                        dataType: 'json'
+                    })
+                            .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                                console.log('Response', response); // LOG dans Console Javascript
+                                if (response.connexion) {
+                                    window.location.href = "ConsultationEnCours.html?idConsultation=" + idConsultation;
+                                } else {
+                                    //error message?
+                                }
+                            })
+                            .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                                console.log('Error', error); // LOG dans Console Javascript
+                                alert("Erreur lors de l'appel AJAX");
+                            })
+                            .always(function () { // Fonction toujours appelée
+
+                            });
+                });
+
+
+                // Appel AJAX
+                $.ajax({
+                    url: './ActionServlet',
+                    method: 'POST',
+                    data: {
+                        todo: 'mesConsultations'
+                    },
+                    dataType: 'json'
+                })
+                        .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                            console.log('Response', response); // LOG dans Console Javascript
+                            if (response.connexion) {
+                                //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
+                                // TODO: afficher les informations du client dans la notification
+                                // Exemple: Connexion de Ada Lovelace (ID 1)
+
+                                idConsultation = response.idConsultation;
+                                var client = response.client;
+
+                                ///////////////infos client   
+                                // alert(client.nom);
+                                $('#signezodiac').html(client.signezodiaque);
+                                $('#signechinois').html(client.signechinois);
+                                $('#couleur').html(client.couleurportebonheur);
+                                $('#animal').html(client.animaltotem);
+                                $('#nom').html(client.nom);
+                                $('#prenom').html(client.prenom);
+
+                                var dateCons = "", medium = "", commentaire = "", content = "", i;
+                                var tdhDate = '<td width="33%" style="text-align:center"><strong style="font-size: 1.4vw">';
+                                var tdhMedium = '<td width="33%" style="text-align:left"><strong style="font-size: 1.4vw">';
+                                var tdhCommentaire = '<td width="33%" style="text-align:left"><strong style="font-size: 1.4vw">';
+                                var tdDate = '<td width="33%" style="text-align:center">';
+                                var tdMedium = '<td width="33%" style="text-align:left">';
+                                var tdCommentaire = '<td width="33%" style="text-align:left">';
+                                var listC = response.listeCons;
+                                var head = '<tr>' + tdhDate + 'Date' + '</strong></td>' + tdhMedium + 'Medium</strong></td>' + tdhCommentaire + 'Commentaire</strong></td><td><br></br><br></br></td></tr>';
+                                for (i = 0; i < listC.length; i++)
+                                {
+                                    if (listC[i].statusConsultation === "Terminée") {
+                                       // console.log("rentre ici");
+                                        dateCons = listC[i].dateConsultation;
+                                        medium = listC[i].mediumConsultation;
+                                        commentaire = listC[i].commentaireEmploye;
+                                        content = content + '<tr>' + tdDate + dateCons + '</td>' + tdMedium + medium + '</td>' + tdCommentaire + commentaire + '</td><td><br></br><br></br></td></tr>';
+                                    }
+                                }
+
+                                $('#listeConsultations').html(head + content);
+
+
+
+                                ///////////////////////infos medium
+
+                                var medium = response.medium;
+
+                                $('#type').html(medium.type);
+                                $('#denomination').html(medium.denomination);
+                                $('#presentation').html(medium.presentation);
+                                $('#genre').html(medium.genre);
+                                var image = '<img src="images/' + medium.photo + '" alt="Logo" class="circleimage">';
+                                $('#placeholder').html(image);
+
+                                var content = "";
+                                var td1 = '<td width="50%" style="text-align:right">';
+                                var td2 = '<td width="50%px" class="text" id="genre">';
+
+                                if (medium.type === "Astrologue")
+                                {
+                                    content = '<tr>' + td1 + '<strong style="font-size: 1.4vw">Promotion :</strong>' + '</td>' + td2 + medium.Promotion + '</td> <td> <br> </br> </td> </tr>';
+                                    content = content + '<tr>' + td1 + '<strong style="font-size: 1.4vw">Formation :</strong>' + '</td>' + td2 + medium.Formation + '</td> <td> <br> </br> </td> </tr>';
+                                }
+
+                                if (medium.type == "Spirite")
+                                {
+                                    content = '<tr>' + td1 + '<strong style="font-size: 1.4vw">Support :</strong>' + '</td>' + td2 + medium.Support + '</td> <td> <br> </br> </td> </tr>';
+                                }
+
+                                $('#informations').append(content);
+
+
+                                $('#leclient').show();
+                                $('#titremedium').show();
+                                $('#lemedium').show();
+                                $('#placeholder').show();
+                                $('#boutonCommencer').show();
+
+
+                            } else {
+                                $('#nondispo').html("Aucune Consultation Disponible<br>Vous recevrez une notification bientôt"); // Message pour le paragraphe de notification
+                                $('#nondispo').show();
+                            }
+                        })
+                        .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                            console.log('Error', error); // LOG dans Console Javascript
+                            alert("Erreur lors de l'appel AJAX");
+                        })
+                        .always(function () { // Fonction toujours appelée
+
+                        });
+            });
+        </script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: myFont;
+                background-color: black;
+                color: white;
+            }
+
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTROMAN.TTF);
+            }
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTBOLD.TTF);
+                font-weight: bold;
+            }
+            button:hover{
+                background-color: black;
+                color: white;
+            }
+
+            .menu{
+
+                text-align: right;
+                padding-right: 3%;
+                padding-top: 3%;
+                padding-bottom: 100px;
+                color: black; 
+                height: 70%px;
+                float: right;
+            }
+
+            .header{
+                height: auto;
+                background-color: black;
+            }
+
+            .logo {
+                display: inline;
+                padding-top: 27px;
+                width: 15%;
+            }
+
+            .wrapper{
+                display: inline;
+                text-align: center;
+                margin-left: 42%;
+                margin-right: auto;
+                padding-top: 50px;
+                width: 15%px;
+
+            }
+
+            .menu button{
+                padding: 9px 18px;
+                color: white;
+                text-align: center;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                margin-bottom: 20px;
+            }
+
+            .menu button:hover{
+                background-color: white;
+                color: black;
+            }
+
+            button{
+                padding: 9px 18px;
+                color: black;
+                text-align: center;
+                background-color: white;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 1.1vw;
+                margin-bottom: 20px;
+            }
+
+            button:hover{
+                background-color: black;
+                color: white;
+            }
+
+            .name{
+                color: white;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                font-family: myFont;
+                font-size: 1.1vw;
+                padding: 9px 18px;
+                width: 20%;
+                margin-right: 2%;
+                margin-bottom:2%;
+            }
+
+            .type{
+                color: white;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                font-family: myFont;
+                font-size: 1.1vw;
+                padding: 9px 18px;
+                width: 47%;
+                margin-right: 2%;
+                margin-bottom:2%;
+            }
+
+            input[type=Date]{
+                color: white;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                font-family: myFont;
+                font-size: 1.1vw;
+                padding: 9px 18px;
+                width: 20%;
+                display: inline;
+                margin-bottom: 2%
+            }
+
+            input[type=button]{
+                padding: 9px 18px;
+                color: black;
+                text-align: center;
+                background-color: white;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 1.1vw;
+                margin-bottom: 20px;
+            }
+
+            input[type=button]:hover{
+                background-color: black;
+                color: white;
+            }
+
+            ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: white;
+                opacity: 1; /* Firefox */
+            }
+
+            .hand{
+                z-index: 0;
+                float: left;
+                position: relative;
+                padding: 0em;
+                left: 50%;
+                margin-top: 0%;
+                bottom:17vw;
+                transform: translateX(-100%);
+                height: auto;
+                width: 30%;
+                max-width: 250px;
+                animation: moving;
+                animation-duration: 8s;
+                animation-iteration-count: infinite;
+            }
+
+            @keyframes moving {
+                0% {left:50%; bottom:17vw;}
+                50% {left:48%; bottom:16vw;}
+                100% {left:50%; bottom:17vw;}
+            }
+
+        </style>
+    </head>
+    <body>
+
+
+        <div class="header">
+            <div class="wrapper">
+                <img src="images/logoWhite.png" alt="Logo" class="logo">
+            </div>
+            <div class="menu">
+                <button onclick="location.href = 'Login.html'">se connecter</button>
+            </div>
+        </div>
+
+        <div style="width: 100%; display: table;">
+            <div style="display: table-row; height: 100px;">
+                <div style="width: 50%; display: table-cell; ">
+                    <p style="font-size: 3.5vw; margin-bottom: 1%; margin-left: 35%; z-index: 20;">S'inscrire:</p>
+                    <p style="font-size: 1.8vw; margin-top: 0; margin-bottom: 2%; margin-left: 35%; z-index: 30">Vous avez un compte?</p>
+                    <button class="bouton" onclick="location.href = 'Login.html'">se connecter</button> 
+                    <img src="images/handIllustration.png" alt="Logo" class="hand">
+
+                </div>
+                <div style="display: table-cell; "> 
+                    <form style="margin-top: -4%">
+                        <input class="name" type="text" id="nom" name="nom" placeholder="Nom">
+                        <input class="name" type="text" id="prenom" name="prenom" placeholder="Prenom"><br>
+                        <p style="font-size: 1.1vw; display: inline; margin-right: 2%">Date de Naissance:</p>
+                        <input type="Date" id="date" name="date"><br>
+                        <p style="font-size: 1.1vw; display: inline; margin-right: 2%">Genre:</p>
+                        <input TYPE="radio" NAME="genre" VALUE="f">Femme
+                        <input TYPE="radio" NAME="genre" VALUE="h">Homme
+                        <input TYPE="radio" NAME="genre" VALUE="a">Autre<br><br>
+                        <input class="type" type="text" id="adresse" name="adresse" placeholder="Adresse Postale"><br>
+                        <input class="type" type="text" id="tel" name="tel" placeholder="Telephone"><br> 
+                        <input class="type" type="email" id="email" name="email" placeholder="Email"><br> 
+                        <input class="type" type="password" id="mdp" name="mot de passe" placeholder="Mot De Passe"><br> 
+                    </form>
+                    <button  id="bouton-sinscrire" >s'inscrire</button>
+                    <p id="notification"></p>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $('#bouton-sinscrire').on('click', function (ev) { // Fonction appelée lors du clic sur le bouton
+                    ev.preventDefault();
+                    $('#bouton-sinscrire').disabled = true;
+                    console.log("clic sur le bouton de s'inscrire"); // LOG dans Console Javascript
+                    // Récupération de la valeur des champs du formulaire
+                    var radioValue = $("input[name='genre']:checked").val();
+                    var nom = $('#nom').val();
+                    var prenom = $('#prenom').val();
+                    var telephone = $('#tel').val();
+                    var adresse = $('#adresse').val();
+                    var mail = $('#email').val();
+                    var mdp = $('#mdp').val();
+                    var dateNaissance = $('#date').val();
+
+                    /*  if(radioValue== null || radioValue=="", nom== null || nom=="", prenom==null || prenom=="", telephone == null || telephone=="", adresse == null || adresse=="", mail==null || mail=="", mdp == null || mdp=="")
+                     {
+                     $('#notification').html("Veuillez remplir tous les champs.");  
+                     } else 
+                     {*/
+
+                    // Appel AJAX
+                    if (radioValue && nom && prenom && telephone && adresse && mail && mdp && dateNaissance)
+                    {
+                        $('#notification').html("Inscription..."); // Message pour le paragraphe de notification
+                        $.ajax({
+                            url: './ActionServlet',
+                            method: 'POST',
+                            data: {
+                                todo: 'inscrire',
+                                nom: nom,
+                                prenom: prenom,
+                                telephone: telephone,
+                                adresse: adresse,
+                                mail: mail,
+                                mdp: mdp,
+                                dateNaissance: dateNaissance,
+                                gender: radioValue
+                            },
+                            dataType: 'json'
+                        })
+                                .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                                    console.log('Response', response); // LOG dans Console Javascript
+                                    if (response.validation) {
+                                        window.location.href = "Login.html";
+                                    } else {
+                                        $('#notification').html("un compte existe déjà avec cette adresse mail"); // Message pour le paragraphe de notification
+                                    }
+                                })
+                                .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                                    console.log('Error', error); // LOG dans Console Javascript
+                                    alert("Erreur lors de l'appel AJAX");
+                                })
+                                .always(function () { // Fonction toujours appelée
+                                });
+                        //return false; //pour que ca fasse pas le comportement formulaire et plutot appel ajax
+                        // }
+                    } else
+                    {
+                        $('#notification').html("Veuillez remplir tous les champs."); // Message pour le paragraphe de notification
+                    }
+                });
+            });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: myFont;
+                background-color: black;
+                color: white;
+            }
+
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTROMAN.TTF);
+            }
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTBOLD.TTF);
+                font-weight: bold;
+            }
+
+            .menu{
+
+                text-align: right;
+                padding-right: 3%;
+                padding-top: 3%;
+                padding-bottom: 100px;
+                color: black; 
+                height: 70%px;
+                float: right;
+            }
+
+            .header{
+                height: auto;
+                background-color: black;
+            }
+
+            .logo {
+                display: inline;
+                padding-top: 27px;
+                width: 15%;
+            }
+
+            .wrapper{
+                display: inline;
+                text-align: center;
+                margin-left: 42%;
+                margin-right: auto;
+                padding-top: 50px;
+                width: 15%px;
+
+            }
+
+            .menu button{
+                padding: 9px 18px;
+                color: white;
+                text-align: center;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                margin-bottom: 20px;
+            }
+
+            .menu button:hover{
+                background-color: white;
+                color: black;
+            }
+
+            .bouton{
+                padding: 9px 18px;
+                color: white;
+                text-align: center;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 1.1vw;
+                margin-bottom: 20px;
+                margin-left: 5%
+            }
+
+            .bouton:hover{
+                background-color: white;
+                color: black;
+            }
+
+            input[type=Email]{
+                color: white;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                font-family: myFont;
+                font-size: 1.1vw;
+                padding: 9px 18px;
+                width: 50%;
+            }
+
+            input[type=password]{
+                color: white;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                font-family: myFont;
+                font-size: 1.1vw;
+                padding: 9px 18px;
+                width: 50%;
+            }
+
+            button{
+                padding: 9px 18px;
+                color: black;
+                text-align: center;
+                background-color: white;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 1.1vw;
+                margin-bottom: 20px;
+            }
+
+            button:hover{
+                background-color: black;
+                color: white;
+            }
+
+            ::placeholder {
+                color: white;
+                opacity: 1;
+            }
+
+            .hand{
+                z-index: 0;
+                float: left;
+                position: relative;
+                padding: 0em;
+                left: 50%;
+                margin-top: 0%;
+                bottom:17vw;
+                transform: translateX(-100%);
+                height: auto;
+                width: 30%;
+                max-width: 250px;
+                animation: moving;
+                animation-duration: 8s;
+                animation-iteration-count: infinite;
+            }
+
+            @keyframes moving {
+                0% {left:50%; bottom:17vw;}
+                50% {left:48%; bottom:16vw;}
+                100% {left:50%; bottom:17vw;}
+            }
+
+        </style>
+    </head>
+    <body>
+
+
+        <div class="header">
+            <div class="wrapper">
+                <img src="images/logoWhite.png" alt="Logo" class="logo">
+            </div>
+            <div class="menu">
+                <button onclick="location.href = 'index.html'">retour</button>
+            </div>
+        </div>
+
+        <div style="width: 100%; display: table;">
+            <div style="display: table-row; height: 100px;">
+                <div style="width: 50%; display: table-cell; ">
+                    <p style="font-size: 3.5vw; margin-bottom: 1%; margin-left: 35%; z-index: 20;">Se connecter:</p>
+                    <p style="font-size: 1.8vw; margin-top: 0; margin-bottom: 1%; margin-left: 35%; z-index: 30">Pas de compte?</p>
+                    <button class="bouton"  onclick="location.href = 'SignUp.html'">s'inscrire</button> 
+                    <img src="images/handIllustration.png" alt="Logo" class="hand">
+
+                </div>
+                <div style="display: table-cell; "> 
+                    <form >
+                        <input type="Email" id="champ-login" name="fname" placeholder="Email"><br><br>
+                        <input type="password" id="champ-password" name="lname" placeholder="Mot De Passe"><br><br>
+                    </form>
+                    <button  id="bouton-connexion" >se connecter</button>
+                </div>
+
+                <p id="notification"></p>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $('#bouton-connexion').on('click', function () { // Fonction appelée lors du clic sur le bouton
+                    console.log("clic sur le bouton de connexion"); // LOG dans Console Javascript
+                    $('#notification').html("Connexion..."); // Message pour le paragraphe de notification
+
+                    // Récupération de la valeur des champs du formulaire
+                    var champLogin = $('#champ-login').val();
+                    var champPassword = $('#champ-password').val();
+
+
+                    if (champLogin == null || champLogin == "", champPassword == null || champPassword == "")
+                    {
+                        $('#notification').html("Veuillez remplir tous les champs.");
+                    } else
+                    {
+
+                        // Appel AJAX
+                        $.ajax({
+                            url: './ActionServlet',
+                            method: 'POST',
+                            data: {
+                                todo: 'connecter',
+                                login: champLogin,
+                                password: champPassword
+                            },
+                            dataType: 'json'
+                        })
+                                .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                                    console.log('Response', response); // LOG dans Console Javascript
+                                    if (response.connexion) {
+                                        //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
+                                        // TODO: afficher les informations du client dans la notification
+                                        // Exemple: Connexion de Ada Lovelace (ID 1)
+                                        var utilisateur = response.utilisateur;
+
+
+                                        if (utilisateur.type === "Client")
+                                        {
+                                            $('#notification').html("Connexion d'un client");  // Message pour le paragraphe de notification
+                                            window.location.href = "profilClient.html";
+                                        } else
+                                        {
+                                            $('#notification').html("Connexion d'un employe");  // Message pour le paragraphe de notification 
+                                            window.location.href = "profilEmploye.html";
+                                        }
+                                    } else {
+                                        $('#notification').html("Login et/ou mot de passe incorrect(s)"); // Message pour le paragraphe de notification
+                                    }
+                                })
+                                .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                                    console.log('Error', error); // LOG dans Console Javascript
+                                    alert("Erreur lors de l'appel AJAX");
+                                })
+                                .always(function () { // Fonction toujours appelée
+
+                                });
+
+                    }
+                });
+            });
+        </script>
+
+
+    </body>
+</html>

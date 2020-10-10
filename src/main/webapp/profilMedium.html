@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: myFont;
+            }
+
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTROMAN.TTF);
+            }
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTBOLD.TTF);
+                font-weight: bold;
+            }
+
+            /*SCROLL BAR*/
+            /* width */
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background:white;
+                border: 1.5px solid black; 
+            }
+            ::-webkit-scrollbar-track:horizontal {
+                background:black;
+                border: 1.5px solid black; 
+            }
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: black; 
+            }
+
+
+            .header{
+                height: auto;
+                background-color: white;
+            }
+
+            .wrapper{
+                display: inline;
+                text-align: center;
+                margin-left: 2%;
+                margin-right: auto;
+                padding-top: 50px;
+                width: 15%;
+
+            }
+
+            .menu{
+
+                text-align: right;
+                padding-right: 3%;
+                padding-top: 3%;
+                padding-bottom: 100px;
+                color: black; 
+                height: 70%px;
+                float: right;
+            }
+
+            .menu button{
+                padding: 9px 18px;
+                color: black;
+                text-align: center;
+                background-color: white;
+                border: 1.5px solid black;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                margin-bottom: 20px;
+            }
+
+            .menu button:hover{
+                background-color: black;
+                color: white;
+            }
+
+            .menu button:disabled{
+                background-color: black;
+                color: white;
+            }
+
+            .mediumFond-image {
+                background-image: url("images/MainBannerPM.png");
+                height: 100%;
+                width: 100%;
+                background-size: cover;
+                position: relative;
+                text-align: center; 
+                margin-right: 30px;
+                padding-bottom:30px;
+            }
+
+            .corpsHaut{
+                position:relative;
+                text-align: center;
+                width: 100%;
+                height: 60%;
+                padding-bottom:40px;
+            }
+
+            .txtcorps{
+                font-family: myFont;
+            }
+
+            .centered {
+                display: table-cell;
+                height: 40px;
+                padding-left:130px;
+                text-align: left;
+                position:relative;
+            }
+
+            .logo {
+                display: inline;
+                padding-top: 27px;
+                width: 15%;
+            }
+
+            .profilePic{
+                position: relative;
+                padding: 0em;
+                margin-left: 50%;
+                height: auto;
+                width: 100%;
+                max-width: 200px;
+            }
+
+
+            .corpsBas{
+                background-color: black;
+                text-align: center;
+                padding-top: 20px;
+                padding-bottom: 50px;
+                width: 100%;
+            }
+
+            .txtCorpsBas{
+                font-size: 22px;
+                color: white;
+                display: inline;
+                padding-right: 30px;
+            }
+
+            .corpsBas button{
+                padding: 4% 14%;
+                color: white;
+                text-align: center;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 95%;
+                margin-bottom: 20px;
+                display: inline;
+            }
+
+            .corpsBas button:hover{
+                background-color: white;
+                color: black;
+            }
+
+            .title{
+                position: absolute;
+
+                text-align: center;
+                width: 100%;
+                height: 5em;
+            }
+
+            .circleplace{
+                position: absolute;
+                padding: 0em;
+                left: 12%;
+                top: 20%;
+                width: 20vw;
+                height: 20vw;
+                overflow: hidden;
+                border-radius: 50%;
+                border: 0.3vw solid black;
+            }
+
+
+            .circleimage{
+                padding: 0;
+                margin: 0;
+                width: auto;
+                height: 100%;
+                margin-left: -4vw;
+            }
+
+            .leaf{
+                position: absolute;
+                padding: 0em;
+                left: 7%;
+                height: auto;
+                width: 30%;
+                max-width: 500px;
+                top:-3%;
+                animation: moving;
+                animation-duration: 8s;
+                animation-iteration-count: infinite;
+            }
+
+            @keyframes moving {
+                0% {left:7%; top:-3%;}
+                50% {left:6%; top:-1%;}
+                100% {left:7%; top:-3%;}
+            }
+
+            @keyframes appear{
+                0% {opacity: 0;}
+                50% {opacity: 100%; font-size: 1.3vw;}
+                100% {opacity: 100%; font-size: 1vw;}
+            }
+
+            .text{
+                text-align:left; 
+                font-size: 1.5vw; 
+                padding-left: 0.5%
+            }
+
+            .OK{
+                color:#70AD47;
+                text-align:left; 
+                padding-left: 23%; 
+                font-size: 1vw;
+                animation: appear;
+                animation-duration: 1s;
+            }
+
+            .Error{
+                color:#C00000;
+                text-align:left; 
+                font-size: 1vw; 
+                padding-left: 23%;
+                animation: appear;
+                animation-duration: 1s;
+            }
+
+        </style>
+    </head>
+    <body>
+
+
+        <div class="header">
+            <div class="wrapper">
+                <img src="images/logoBlack.png" alt="Logo" class="logo">
+            </div>
+            <div class="menu">
+                <button onclick="location.href = 'ListeMediums.html'">retour</button>
+            </div>
+        </div>
+
+        <div class="corpsHaut" style="background-color: #F7F7F7">
+            <div class="title" style="padding-bottom: 2vw; margin-bottom: 2vw;">
+                <p style="font-size: 2.5vw;"> Profil du Medium </p>
+            </div>
+            <div class="circleplace" id="placeholder">
+                <img src="images/profil.jpg" alt="Logo" class="circleimage">
+            </div>
+            <img src="images/leafwithsymbol.png" alt="Logo" class="leaf">
+            <table width="100%" style="margin-top:0; position:absolute; padding-top: 4vw; margin-top: 4vw;">
+
+                <td width="98%" style="position: absolute;">
+                    <table id="informations" width="100%">
+                        <tr>
+                            <td width="50%px" style="text-align:right">
+                                <strong style="font-size: 1.4vw">Type :</strong>
+                            </td>
+                            <td width="50%px" class="text" id="type">
+                                Spirite
+                            </td>
+                            <td> <br> </br> </td>
+                        </tr>
+                        <tr>
+                            <td width="50%px" style="text-align:right">
+                                <strong style="font-size: 1.4vw">Dénomination :</strong>
+                            </td>
+                            <td width="50%px" class="text" id="denomination">
+                                Gwannaelle
+                            </td>
+                            <td> <br> </br> </td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right">
+                                <strong style="font-size: 1.4vw">Genre:</strong>
+                            </td>
+                            <td width="50%px" class="text" id="genre">
+                                Femme
+                            </td>
+                            <td> <br> </br> </td>
+                        </tr>
+                        <!--                 <tr>
+                                             <td width="50%" style="text-align:right">
+                                                 <strong style="font-size: 1.4vw">Support :</strong>
+                                             </td>
+                                             <td width="50%px" class="text">
+                                                 Serpent
+                                             </td>
+                                             <td> <br> </br> </td>
+                                         </tr>	-->
+                        <tr>
+                            <td width="50%" style="text-align:right">
+                                <strong style="font-size: 1.4vw">Présentation :</strong>
+                            </td>
+                            <td width="50%" class="text" id="presentation">
+                                Spécialiste des grandes conversations au-delà de TOUTES les frontières
+                            </td>
+                            <td> <br> </br> </td>
+                        </tr>					
+                    </table>
+                </td>
+            </table>	
+
+        </div>
+
+        <div class="corpsBas">
+            <table width="100%" align="left" style="color: #fff; background: black; padding-top: 2%; padding-bottom: 2%">
+                <tr>
+                    <td>
+                        <table width="100%" style="color: #fff; background: black;  padding-left: 10%;">
+                            <tr>
+                                <td width="30%" style="text-align:right;">
+                                    <img src="images/Disponible.svg" style="width: 30px; height: 30px; vertical-align:middle">
+                                </td>
+                                <td style="text-align:left;"> 
+                                    <p style="font-size: 1.4vw; margin:0; margin-left: 1%">Actuellement disponible</p>
+                                </td>
+                                <td> <br> </br> </td>
+                            </tr>
+                            <tr>
+                                <td width="30%" style="text-align:right;">
+                                    <img src="images/VerifieCheck.svg" style="width: 30px; height: 30px; vertical-align:middle">
+                                </td>
+                                <td style="text-align:left;"> 
+                                    <p style="font-size: 1.4vw; margin: 0; margin-left: 1%">Vérifié par Predict'IF</p>
+                                </td>
+                                <td> <br> </br> </td>
+                            </tr>
+                            <tr>
+                                <td width="30%" style="text-align:right;">
+                                    <img src="images/StarsWhite.svg" style="width: 30px; height: 30px; vertical-align:middle">
+                                </td>
+                                <td style="text-align:left;"> 
+                                    <p style="font-size: 1.4vw; margin:0; margin-left: 1%">Vraie Spirite</p>
+                                </td>
+                                <td> <br> </br> </td>
+                            </tr>
+                            <td> <br> </br> </td>
+                        </table>
+                    </td>
+
+                    <td>
+                        <table width="100%" style="color: #fff; background: black; padding-right: 10%">
+                            <tr>
+                                <td> 
+                                    <button id="demander">Demander une consultation</button>
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td class="OK" id="ok">  
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="Error" id="prob">  
+                                </td>	
+                                <td> <br> </br> </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                // Fonction appelée lors du clic sur le bouton
+                console.log("profilEmploye"); // LOG dans Console Javascript
+
+
+                // Récupération de la valeur des champs du formulaire
+                var id = window.location.search.substring(10);
+
+                $('#demander').on('click', function () {
+
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'demander',
+                            idMedium: id
+                        }
+                    })
+                            .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                                console.log('Response', response); // LOG dans Console Javascript
+                                if (response.connexion) {
+                                    var content = '<img src="images/GreenCkeck.svg" style="width: 1.1vw; height: 1.1vw; vertical-align:middle"> Demande effectuée';
+                                    $('#ok').html(content);
+                                } else {
+                                    var content = '<img src="images/RedX.svg" style="width: 1.1vw; height: 1.1vw; vertical-align:middle"> Réessayer plus tard';
+                                    $('#prob').html(content);
+                                }
+                            })
+                            .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                                console.log('Error', error); // LOG dans Console Javascript
+                                alert("Erreur lors de l'appel AJAX");
+                            })
+                            .always(function () { // Fonction toujours appelée
+
+                            });
+
+
+                });
+
+                // Appel AJAX
+                $.ajax({
+                    url: './ActionServlet',
+                    method: 'POST',
+                    data: {
+                        todo: 'profilMedium',
+                        idMedium: id
+                    },
+                    dataType: 'json'
+                })
+                        .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                            console.log('Response', response); // LOG dans Console Javascript
+                            if (response.connexion) {
+                                //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
+                                // TODO: afficher les informations du client dans la notification
+                                // Exemple: Connexion de Ada Lovelace (ID 1)
+                                var medium = response.medium;
+
+                                $('#type').html(medium.type);
+                                $('#denomination').html(medium.denomination);
+                                $('#presentation').html(medium.presentation);
+                                $('#genre').html(medium.genre);
+                                var image = '<img src="images/' + medium.photo + '" alt="Logo" class="circleimage">';
+                                $('#placeholder').html(image);
+
+                                var content = "";
+                                var td1 = '<td width="50%" style="text-align:right">';
+                                var td2 = '<td width="50%px" class="text" id="genre">';
+
+                                if (medium.type === "Astrologue")
+                                {
+                                    content = '<tr>' + td1 + '<strong style="font-size: 1.4vw">Promotion :</strong>' + '</td>' + td2 + medium.Promotion + '</td> <td> <br> </br> </td> </tr>';
+                                    content = content + '<tr>' + td1 + '<strong style="font-size: 1.4vw">Formation :</strong>' + '</td>' + td2 + medium.Formation + '</td> <td> <br> </br> </td> </tr>';
+                                }
+
+                                if (medium.type == "Spirite")
+                                {
+                                    content = '<tr>' + td1 + '<strong style="font-size: 1.4vw">Support :</strong>' + '</td>' + td2 + medium.Support + '</td> <td> <br> </br> </td> </tr>';
+                                }
+
+                                $('#informations').append(content);
+                                /*
+                                 * astrologue : promotion + formation
+                                 * spritie : support
+                                 * 
+                                 */
+
+                            } else {
+                                $('#notification').html("You fucked up"); // Message pour le paragraphe de notification
+                            }
+                        })
+                        .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                            console.log('Error', error); // LOG dans Console Javascript
+                            alert("Erreur lors de l'appel AJAX");
+                        })
+                        .always(function () { // Fonction toujours appelée
+
+                        });
+            });
+        </script>
+
+    </body>
+</html>

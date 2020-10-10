@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Librairie Javascript: jQuery (v3.4.1) -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: myFont;
+            }
+
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTROMAN.TTF);
+            }
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTBOLD.TTF);
+                font-weight: bold;
+            }
+
+            /*SCROLL BAR*/
+            /* width */
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background:white;
+                border: 1.5px solid black; 
+            }
+            ::-webkit-scrollbar-track:horizontal {
+                background:black;
+                border: 1.5px solid black; 
+            }
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: black; 
+            }
+
+            .hero-image {
+                background-image: url("images/mainBanner.png");
+                height: auto;
+                width: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+
+                padding-right: 0px;
+                margin-right: 0px;
+            }
+
+            .menu{
+
+                text-align: right;
+                padding-right: 3%;
+                padding-top: 3%;
+                padding-bottom: 100px;
+                color: black; 
+                height: 70%px;
+                float: right;
+            }
+
+            .header{
+                height: auto; 
+            }
+
+            .logo {
+                display: inline;
+                padding-top: 27px;
+                width: 15%;
+            }
+
+            .wrapper{
+                display: inline;
+                text-align: center;
+                margin-left: 42%;
+                margin-right: auto;
+                padding-top: 50px;
+                width: 15%px;
+
+            }
+
+            .hand{
+                position: relative;
+                padding: 0em;
+                left: 100%;
+                margin-top: -2%;
+                transform: translateX(-100%);
+                height: auto;
+                width: 30%;
+                max-width: 250px;
+                margin-bottom: 1%;
+                animation: moving;
+                animation-duration: 4s;
+                animation-iteration-count: infinite;
+            }
+
+            @keyframes moving {
+                0% {filter: brightness(100%);}
+                50% {filter: brightness(180%);}
+                90% {filter: brightness(100%);}
+            }
+
+            .skull{
+                position: relative;
+                padding: 0em;
+                left: -1%;
+                top: 0%;
+                transform: translateX(-100%);
+                height: auto;
+                width: 30%;
+                max-width: 250px;
+                margin-bottom: -3%;
+                animation: moving;
+                animation-duration: 8s;
+                animation-iteration-count: infinite;
+            }
+
+            .menu button{
+                padding: 9px 18px;
+                color: black;
+                text-align: center;
+                background-color: white;
+                border: 1.5px solid black;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                margin-bottom: 20px;
+            }
+
+            .banner3 button{
+                padding: 9px 50px;
+                color: white;
+                text-align: center;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                margin-bottom: 20px;
+                display: inline;
+            }
+
+            .banner3 button:hover{
+                background-color: white;
+                color: black;
+            }
+
+            .menu button:hover{
+                background-color: black;
+                color: white;
+            }
+
+            .banner2 {
+                text-align: center;
+                margin-top: 100px;
+                margin-bottom: 70px;
+            }
+
+            .banner3{
+                background-color: black;
+                text-align: center;
+                padding-top: 100px;
+                padding-bottom: 50px;
+            }
+
+            .imgbanner {
+                width: 50%;
+                min-width: 400px;
+                max-width: 550px;
+            }
+
+            .txtbanner2{
+                font-family: myFont;
+                font-size: 2vw;
+            }
+
+            .txtbanner3{
+                font-size: 22px;
+                color: white;
+                display: inline;
+                padding-right: 30px;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+
+        <div class="header">
+            <div class="wrapper">
+                <img src="images/logoBlack.png" alt="Logo" class="logo">
+            </div>
+            <div class="menu">
+                <button onclick="location.href = 'Login.html'">se connecter</button>
+            </div>
+            <div class="hero-image">
+                <img src="images/HandWithSymbols.png" alt="Logo" class="hand">
+                <img src="images/SkullWithSymbols.png" alt="Logo" class="skull">
+            </div>
+
+        </div>
+
+        <div class="banner2">
+            <img src="images/iconBanner.png" alt="banner2" class="imgbanner">
+            <p class="txtbanner2">Spirites, cartomanciens, et astrologues restent à votre disposition 24/7 pour <br>vous aider dans votre vie personnelle, professionnelle, et intime.</p>
+        </div>
+
+        <div class="banner3">
+            <p class="txtbanner3">Vous êtes prêts?</p>
+            <button onclick="location.href = 'SignUp.html'">S'inscrire</button>
+            <br>
+            <img src="images/CreditCard.svg" style="width: 30px; height: 30px; vertical-align:middle">
+            <p style="font-size: 12px; color: white; display: inline-block; margin-left: 5px;">On accepte tout type de carte bancaire</p>
+        </div>
+
+    </body>
+</html>

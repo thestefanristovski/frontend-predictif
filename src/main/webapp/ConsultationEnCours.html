@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: myFont;
+                background-color: black;
+                color: white;
+            }
+
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTROMAN.TTF);
+            }
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTBOLD.TTF);
+                font-weight: bold;
+            }
+
+
+            /*SCROLL BAR*/
+            /* width */
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background:black;
+                border: 1.5px solid white; 
+            }
+            ::-webkit-scrollbar-track:horizontal {
+                background:white;
+                border: 1.5px solid white; 
+            }
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: white; 
+            }
+
+            .header{
+                height: auto;
+                background-color: black;
+            }
+
+            .wrapper{
+                display: inline;
+                text-align: center;
+                margin-left: 2%;
+                margin-right: auto;
+                padding-top: 50px;
+                width: 15%;
+
+            }
+
+            .logo {
+                display: inline;
+                padding-top: 27px;
+                width: 15%;
+            }
+
+            .menu{
+
+                text-align: right;
+                padding-right: 3%;
+                padding-top: 1%;
+                padding-bottom: 0;
+                color: black; 
+                height: 70%px;
+                float: right;
+            }
+
+            .menu button{
+                padding: 9px 18px;
+                color: white;
+                text-align: center;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                margin-bottom: 20px;
+            }
+
+            .commencer button{
+                padding: 9px 18px;
+                color: black;
+                text-align: center;
+                background-color: white;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                width: 100%
+            }
+
+            .commencer button:hover{
+                background-color: black;
+                color: white;
+            }
+
+            .menu button:hover{
+                background-color: white;
+                color: black;
+            }
+
+            .menu button:disabled{
+                background-color: white;
+                color: black;
+            }
+
+            .centered {	
+                height: 40px;
+                width: 1000px;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 100%;
+            }
+
+            .corpsHaut{
+                position: relative;
+                text-align: center;
+                width: 100%;
+                height: auto;
+            }
+
+            .title{
+                position: absolute;
+                text-align: center;
+                color: white;
+                width: 100%;
+                height: 5em;
+            }
+
+            .text{
+                text-align:left; 
+                font-size: 1.2vw; 
+                padding-left: 0.5%
+            }
+
+            .commencer{
+                position: sticky;
+                bottom: 0;
+            }
+
+            .number{
+                background-color: black;
+                border-radius: 0;
+                border: 1.5px solid white;
+                resize: none;
+                color: white;
+                font-family: myFont;
+                font-size: 1.1vw;
+                display: inline;
+                vertical-align: middle;
+                margin-left: 1.5%
+            }
+
+            .Generate {
+                padding: 0.9vw 18px;
+                color: black;
+                text-align: center;
+                background-color: white;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 1vw;
+                display: inline;
+                vertical-align: middle;
+                margin-left: 4%;
+            }
+
+            .Generate:hover{
+                background-color: black;
+                color: white;
+            }
+
+        </style>
+    </head>
+    <body>
+
+
+        <div class="header">
+            <div class="wrapper">
+                <img src="images/logoWhite.png" alt="Logo" class="logo">
+            </div>
+            <div class="menu">
+                <p style="font-size: 2.5vw;">Consultation En Cours</p>
+            </div>
+        </div>
+
+
+        <div class="corpsHaut">
+            <table width="100%" style="margin-top: 0vw; padding-top: 0vw;">
+                <tr>
+                    <td>
+                        <p style="font-size: 2.2vw; width: 100%">Info Client</p>
+                        <table>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Nom :</strong>
+                                </td>
+                                <td id="nom" width="50%" class="text">
+                                    Applesmith
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Prénom :</strong>
+                                </td>
+                                <td id="prenom" width="50%" class="text">
+                                    Johnny
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Signe Zodiac :</strong>
+                                </td>
+                                <td id="zodiac" width="50%" class="text">
+                                    Scorpio
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Signe astrologique chinois :</strong>
+                                </td>
+                                <td id="chinois" width="50%" class="text">
+                                    Dragon
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Couleur porte-bonheur :</strong>
+                                </td>
+                                <td id="couleur" width="50%" class="text">
+                                    Rouge
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Animal Totem :</strong>
+                                </td>
+                                <td id="animal" width="50%px" class="text">
+                                    Serpent
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <table width="100%">
+                            <p style="font-size: 2.2vw; width: 100%">Info Medium</p>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Type :</strong>
+                                </td>
+                                <td id="type" width="50%" class="text">
+                                    Spirite
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Dénomination :</strong>
+                                </td>
+                                <td id="denomination" width="50%" class="text">
+                                    Gwanaelle
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+
+                            <tr>
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Présentation :</strong>
+                                </td>
+                                <td id="presentation" width="50%" class="text">
+                                    Spécialiste des grandes conversations au-delà de TOUTES les frontières
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr id="toggleSupport">
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Support :</strong>
+                                </td>
+                                <td id="support" width="50%" class="text">
+
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr id="toggleFormation">
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Formation :</strong>
+                                </td>
+                                <td id="formation" width="50%" class="text">
+
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                            <tr id="togglePromotion">
+                                <td width="50%" style="text-align:right">
+                                    <strong style="font-size: 1.2vw">Promotion :</strong>
+                                </td>
+                                <td id="promotion" width="50%" class="text">
+
+                                </td>
+                                <td> <br> </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="50%">
+                        <p style="font-size: 2.2vw;"> Inspiration </p>
+                        <strong style="font-size: 1.3vw;"> Echelle du Bonheur </strong> <br><br>
+                        <strong style="font-size: 1vw; display:inline;">Nombres :</strong>
+                        <textarea id="num1" placeholder="amour" class="number 1" cols="5" rows="2"></textarea>
+                        <textarea id="num2" placeholder="sante" class="number 2" cols="5" rows="2"></textarea>
+                        <textarea id="num3" placeholder="travail" class="number 3" cols="5" rows="2"></textarea>
+                        <button id="bouton-generer" class="Generate">Générer</button> <br><br>
+                        <strong style="font-size: 1.3vw;"> Prédictions </strong> <br><br>
+                        <strong style="font-size: 1vw; display:inline;">Amour :</strong>
+                        <textarea id="amour" class="number Amour" cols="70" rows="3"></textarea><br><br>
+                        <strong style="font-size: 1vw; display:inline;">Santé :</strong>
+                        <textarea id="sante" class="number Sante" cols="70" rows="3"></textarea><br><br>
+                        <strong style="font-size: 1vw; display:inline;">Travail :</strong>
+                        <textarea id="travail" class="number Travail" cols="70" rows="3" ></textarea><br><br>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div class="commencer">
+            <button id="bouton-terminer">Terminer la Consultation</button>
+        </div>
+        <script>
+
+
+            $(document).ready(function () {
+
+                var idConsultation = window.location.search.substring(16);
+                console.log(idConsultation);
+                $('#toggleSupport').hide();
+                $('#togglePromotion').hide();
+                $('#toggleFormation').hide();
+
+                $.ajax({
+                    url: './ActionServlet',
+                    method: 'POST',
+                    data: {
+                        todo: 'consultationEnCours',
+                        id: idConsultation
+                    },
+                    dataType: 'json'
+                })
+                        .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                            console.log('Response', response); // LOG dans Console Javascript
+                            //client info
+                            var nom = response.client.nom;
+                            var prenom = response.client.prenom;
+                            var zodiac = response.client.zodiac;
+                            var chinois = response.client.chinois;
+                            var couleur = response.client.couleur;
+                            var animal = response.client.animal;
+
+                            $('#nom').html(nom);
+                            $('#prenom').html(prenom);
+                            $('#zodiac').html(zodiac);
+                            $('#chinois').html(chinois);
+                            $('#couleur').html(couleur);
+                            $('#animal').html(animal);
+
+                            //on rend invisible les balises qui dependent du type de medium
+                            //  toggleVisibility("toggleSupport");
+                            // toggleVisibility("togglePromotion");
+                            // toggleVisibility("toggleFormation");
+
+                            //medium info
+                            var denomination = response.medium.denomination;
+                            var presentation = response.medium.presentation;
+                            var type = response.medium.type;
+                            if (type === "Spirite")
+                            {
+                                var support = response.medium.support;
+                                $('#support').html(support);
+                                $('#toggleSupport').show();
+                            } else if (type === "Astrologue")
+                            {
+                                var promotion = response.medium.promotion;
+                                var formation = response.medium.formation;
+                                $('#togglePromotion').show();
+                                $('#toggleFormation').show();
+                                $('#promotion').html(promotion);
+                                $('#formation').html(formation);
+                            }
+
+                            $('#denomination').html(denomination);
+                            $('#type').html(type);
+                            $('#presentation').html(presentation);
+
+                        })
+                        .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                            console.log('Error', error); // LOG dans Console Javascript
+                            alert("Erreur lors de l'appel AJAX");
+                        })
+                        .always(function () { // Fonction toujours appelée
+                        });
+
+                $('#bouton-generer').on('click', function () {
+                    var num1 = $('#num1').val();
+                    var num2 = $('#num2').val();
+                    var num3 = $('#num3').val();
+                    var couleur = $('#couleur').val();
+                    var animal = $('#animal').val();
+
+                    $.ajax({
+
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'generer-prediction',
+                            num1: num1,
+                            num2: num2,
+                            num3: num3,
+                            couleur: couleur,
+                            animal: animal
+
+                        },
+                        dataType: 'json'
+                    })
+                            .done(function (response) {
+                                $('#amour').html(response.predictions.amour);
+                                $('#sante').html(response.predictions.sante);
+                                $('#travail').html(response.predictions.travail);
+
+                            })
+                            .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                                console.log('Error', error); // LOG dans Console Javascript
+                                alert("Erreur lors de l'appel AJAX generation");
+                            })
+                            .always(function () { // Fonction toujours appelée
+                            });
+                });
+
+                $('#bouton-terminer').on('click', function () {
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'terminerConsultation',
+                            id: idConsultation
+                        },
+                        dataType: 'json'
+                    })
+                            .done(function (response) {
+                                if (response.validation)
+                                {
+                                    console.log("Consultation Terminee");
+                                    window.location.href = "ConsultationTerminee.html?idConsultation=" + idConsultation;
+                                } else
+                                {
+                                    console.log('finalisation echouée..');
+                                }
+                            })
+                            .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                                console.log('Error', error); // LOG dans Console Javascript
+                                alert("Erreur lors de l'appel AJAX");
+                            })
+                            .always(function () { // Fonction toujours appelée
+                            });
+                });
+            });
+        </script>
+
+
+
+    </body>
+</html>

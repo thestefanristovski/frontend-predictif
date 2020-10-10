@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: myFont;
+                background-color: black;
+                color: white;
+            }
+
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTROMAN.TTF);
+            }
+            @font-face {
+                font-family: myFont;
+                src: url(images/ROMANABTBOLD.TTF);
+                font-weight: bold;
+            }
+
+
+            /*SCROLL BAR*/
+            /* width */
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background:black;
+                border: 1.5px solid white; 
+            }
+            ::-webkit-scrollbar-track:horizontal {
+                background:black;
+                border: 1.5px solid black; 
+            }
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: white; 
+            }
+            ::-webkit-scrollbar-thumb:horizontal {
+                background: black; 
+            }
+
+            .header{
+                height: auto;
+                background-color: black;
+            }
+
+            .wrapper{
+                display: inline;
+                text-align: center;
+                margin-left: 2%;
+                margin-right: auto;
+                padding-top: 50px;
+                width: 15%;
+
+            }
+
+            .logo {
+                display: inline;
+                padding-top: 27px;
+                width: 15%;
+            }
+
+            .menu{
+
+                text-align: right;
+                padding-right: 3%;
+                padding-top: 3%;
+                padding-bottom: 0px;
+                color: black; 
+                float: right;
+            }
+
+            .menu button{
+                padding: 9px 18px;
+                color: white;
+                text-align: center;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                margin-bottom: 20px;
+            }
+
+            .corpsHaut button{
+                padding: 9px 18px;
+                color: white;
+                text-align: center;
+                background-color: black;
+                border: 1.5px solid white;
+                border-radius: 0;
+                transition-duration: 0.3s;
+                font-family: myFont;
+                font-size: 85%;
+                margin-top: 20px;
+                left: -46.9%;
+                position: relative;
+            }
+
+            .corpsHaut button:hover{
+                background-color: white;
+                color: black;
+            }
+
+            .menu button:hover{
+                background-color: white;
+                color: black;
+            }
+
+            .menu button:disabled{
+                background-color: white;
+                color: black;
+            }
+
+            .centered {	
+                height: 40px;
+                width: 1000px;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 100%;
+            }
+
+            .corpsHaut{
+
+                text-align: center;
+                width: 100%;
+                height: auto;
+            }
+
+            .title{
+                position: absolute;
+                text-align: center;
+                color: white;
+                width: 100%;
+
+            }
+
+            .text{
+                text-align:left; 
+                font-size: 1.5vw; 
+                padding-left: 0.5%
+            }
+
+            textarea{
+                width: 105%;
+                color: white;
+                background-color: black;
+                font-family: myFont;
+                border-radius: 0;
+                border: 1.5px solid white;
+                position: relative;
+                left: -5%;
+                resize: none;
+            }
+
+            .OK{
+                color:#70AD47;
+                text-align:left; 
+                padding-left: 23%; 
+                font-size: 1vw;
+                animation: appear;
+                animation-duration: 1s;
+                position: relative;
+                padding-top: 1vw;
+            }
+
+            @keyframes appear{
+                0% {opacity: 0;}
+                50% {opacity: 100%; font-size: 1.3vw;}
+                100% {opacity: 100%; font-size: 1vw;}
+            }
+
+            .stone{
+                position: absolute;
+                padding: 0em;
+                left: 32%;
+                top: -3vw;
+                transform: translateX(-0%);
+                height: auto;
+                width: 8%;
+                max-width: 250px;
+                margin-bottom: 0%;
+                z-index: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+
+
+        <div class="header">
+            <div class="wrapper">
+                <img src="images/logoWhite.png" alt="Logo" class="logo">
+            </div>
+            <div class="menu">
+                <button disabled="">Votre Agence</button>
+                <button onclick="location.href = 'MesConsultations.html'">Consultations</button>
+                <button onclick="location.href = 'profilEmploye.html'">Mon Profil</button>
+                <button id="deconnecter">Se déconnecter</button>
+            </div>
+        </div>
+
+        <div class="title" style="padding-top: 0vw; margin-top: 0vw;">
+            <p style="font-size: 2.7vw; top-padding:-4vw; top-margin:-4vw;">Activité de l’agence : top 5 des mediums</p>
+            <img src="images/StoneIllustration.png" alt="Logo" class="stone" style="margin-top: 0vw; padding-top: 0vw;">
+
+        </div>
+        <div class="corpsHaut">
+
+            <div class="title" style="padding-top: -5vw; margin-top: -5vw;">
+                <p style="font-size: 2.2vw; margin-top: 10vw; text-align: center;"> Consultations par Medium </p>		
+            </div>  
+            <div>
+                <table id= "listeMediums" width="100%" style="padding-top: 10vw; margin-top: 10vw;">
+                    <tr>
+                        <td width="50%" style="text-align:right">
+                            <strong style="font-size: 1.4vw">Dénomination </strong>
+                        </td>
+                        <td width="50%" class="text">
+                            <strong style="font-size: 1.4vw">Nb. Consultation </strong>
+                        </td>
+                        <td> <br> </br> </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="text-align:right">
+                            <strong style="font-size: 1.4vw">Milan Tarot </strong>
+                        </td>
+                        <td width="50%" class="text">
+                            14263426
+                        </td>
+                        <td> <br> </br> </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="text-align:right">
+                            <strong style="font-size: 1.4vw">Gwanaelle </strong>
+                        </td>
+                        <td width="50%" class="text">
+                            32815
+                        </td>
+                        <td> <br> </br> </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="text-align:right">
+                            <strong style="font-size: 1.4vw">Baba Vangja </strong>
+                        </td>
+                        <td width="50%" class="text">
+                            32614
+                        </td>
+                        <td> <br> </br> </td>
+                    </tr>	
+                    <tr>
+                        <td width="50%" style="text-align:right">
+                            <strong style="font-size: 1.4vw">Kim Kardashion </strong>
+                        </td>
+                        <td width="50%" class="text">
+                            342614
+                        </td>
+                        <td> <br> </br> </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="text-align:right">
+                            <strong style="font-size: 1.4vw">Prof. Tran </strong>
+                        </td>
+                        <td width="50%" class="text">
+                            0
+                        </td>
+                        <td> <br> </br> </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <script>
+            $(document).ready(function () {
+
+                console.log("Function agence deployed"); // LOG dans Console Javascript
+
+
+                //DECONNEXION
+                $('#deconnecter').on('click', function () {
+
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'deconnexion'
+                        }
+                    })
+                            .always(function (response) {
+                                window.location.href = "index.html";
+                            });
+
+
+                });
+
+
+
+                // Appel AJAX
+                $.ajax({
+                    url: './ActionServlet',
+                    method: 'POST',
+                    data: {
+                        todo: 'agence'
+                    },
+                    dataType: 'json'
+                })
+                        .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                            console.log('Response', response); // LOG dans Console Javascript
+                            if (response.connexion) {
+                                //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
+                                // TODO: afficher les informations du client dans la notification
+                                // Exemple: Connexion de Ada Lovelace (ID 1)
+
+                                var mediums = response.mediums;
+                                var denomination = '', nbConsultations = 0, content = '', i;
+                                var tdh = '<td width="50%" style="text-align:right"><strong style="font-size: 1.4vw">';
+                                var tdhl = '<td width="50%" class="text"><strong style="font-size: 1.4vw">';
+                                var td = '<td width="50%" style="text-align:right"><strong style="font-size: 1.4vw">';
+                                var tdl = '<td width="50%" class="text">';
+                                var head = '<tr>' + tdh + 'Denomination' + '</strong></td>' + tdhl + 'Nombre Consultations</strong></td><td><br></br></td></tr>';
+
+
+
+                                for (i = 0; i < mediums.length; i++)
+                                {
+                                    denomination = mediums[i].denomination;
+                                    nbConsultations = mediums[i].nbConsultations;
+                                    content = content + '<tr>' + td + denomination + '</strong></td>' + tdl + nbConsultations + '</td><td> <br> </br> </td></tr>';
+                                }
+                                $('#listeMediums').html(head + content);
+
+                            } else {
+                                $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
+                            }
+                        })
+                        .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                            console.log('Error', error); // LOG dans Console Javascript
+                            alert("Erreur lors de l'appel AJAX");
+                        })
+                        .always(function () { // Fonction toujours appelée
+
+                        });
+            });
+        </script>
+
+
+
+    </body>
+</html>
